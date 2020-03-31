@@ -1,4 +1,5 @@
 import sys
+import traceback
 
 from pb.common import common_pb2
 from pb.recommand import recommand_pb2_grpc, recommand_pb2
@@ -17,12 +18,15 @@ class RecommandService(recommand_pb2_grpc.RecommandServiceServicer):
                                                                               total=total,
                                                                               total_page=total_page))
         except:
+            traceback.print_exc()
             context.set_code(ERR_CODE_RECOMMAND)
             context.set_details(sys.exc_info()[0])
 
     def SetDefaultRecommandItems(self, request, context):
         try:
             set_default_recommand_items(request.item_ids)
+            return recommand_pb2.EmptyMessage()
         except:
+            traceback.print_exc()
             context.set_code(ERR_CODE_SET_DEFAULT_RECOMMAND_ITEMS)
             context.set_details(sys.exc_info()[0])

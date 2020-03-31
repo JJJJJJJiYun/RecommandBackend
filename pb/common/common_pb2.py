@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='common',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x16pb/common/common.proto\x12\x06\x63ommon\"M\n\x08PageInfo\x12\x0c\n\x04page\x18\x01 \x01(\r\x12\x11\n\tpage_size\x18\x02 \x01(\r\x12\r\n\x05total\x18\x03 \x01(\r\x12\x11\n\ttatalPage\x18\x04 \x01(\rb\x06proto3'
+  serialized_pb=b'\n\x16pb/common/common.proto\x12\x06\x63ommon\"N\n\x08PageInfo\x12\x0c\n\x04page\x18\x01 \x01(\r\x12\x11\n\tpage_size\x18\x02 \x01(\r\x12\r\n\x05total\x18\x03 \x01(\r\x12\x12\n\ntotal_page\x18\x04 \x01(\rb\x06proto3'
 )
 
 
@@ -53,7 +53,7 @@ _PAGEINFO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='tatalPage', full_name='common.PageInfo.tatalPage', index=3,
+      name='total_page', full_name='common.PageInfo.total_page', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -72,7 +72,7 @@ _PAGEINFO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=34,
-  serialized_end=111,
+  serialized_end=112,
 )
 
 DESCRIPTOR.message_types_by_name['PageInfo'] = _PAGEINFO

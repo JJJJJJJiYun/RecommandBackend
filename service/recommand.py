@@ -1,4 +1,4 @@
-import sys
+import traceback
 
 from utils.common import get_start_end_by_page_info, get_total_page
 from utils.redis import redis
@@ -17,7 +17,7 @@ def recommand(user_id, page, page_size):
         item_cf_item_score_list = redis.zrevrange(key_of_item_cf_user_item_interest(user_id), 0, -1, withscores=True)
         # 如果 user_cf 没有结果，返回默认推荐
         if len(user_cf_item_score_list) == 0:
-            result = redis.smembers(key_of_default_recommand_result())[start:end]
+            result = list(redis.smembers(key_of_default_recommand_result()))[start:end]
             return result, len(result), get_total_page(len(result), page_size)
         # 如果 item_cf 没有结果，返回 user_cf 的推荐
         if len(item_cf_item_score_list) == 0:
@@ -34,15 +34,16 @@ def recommand(user_id, page, page_size):
         redis.expire(key_of_user_recommand_result(user_id), 60 * 60)
         result = redis.zrevrange(key_of_user_recommand_result(user_id), 0, -1)
         return result, len(result), get_total_page(len(result), page_size)
-    except:
-        print("recommand err:", sys.exc_info()[0])
-        raise
+    except Exception as e:
+        traceback.print_exc()
+        raise e
 
 
 def set_default_recommand_items(items):
     """设置默认推荐"""
     try:
-        redis.sadd(key_of_default_recommand_result(), items)
-    except:
-        print("set default recommand items err:", sys.exc_info()[0])
-        raise
+        print(items)
+        redis.sadd(key_of_default_recommand_result(), *items)
+    except Exception as e:
+        traceback.print_exc()
+        raise e
