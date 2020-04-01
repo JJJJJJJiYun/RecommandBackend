@@ -1,3 +1,7 @@
+def key_of_user_rating_data(user_id):
+    return "rating_data_user:%s" % user_id
+
+
 def key_of_user_recommand_result(user_id):
     return "recommand_result_user:%s" % user_id
 
