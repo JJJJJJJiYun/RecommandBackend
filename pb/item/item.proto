@@ -1,0 +1,46 @@
+syntax = "proto3";
+package item;
+import "pb/common/common.proto";
+
+service ItemService {
+    rpc GetItemList (GetItemListRequest) returns (GetItemListReply) {
+    }
+
+    rpc GetItem (GetItemRequest) returns (Item) {
+    }
+}
+
+enum ItemType {
+    SOLUTION = 0;
+    TECH_RESULT = 1;
+    CASE = 2;
+    PATENT = 3;
+    COMPANY_NEED = 4;
+    CITY_NEED = 5;
+}
+
+message EmptyMessage {
+}
+
+message GetItemListRequest {
+    ItemType item_type = 1;
+    uint32 page = 2;
+    uint32 page_size = 3;
+}
+
+message GetItemListReply {
+    repeated Item items = 1;
+    common.PageInfo page_info = 2;
+}
+
+message GetItemRequest {
+    ItemType item_type = 1;
+    string id = 2;
+}
+
+message Item {
+    string id = 1;
+    string title = 2;
+    string content = 3;
+    string timestamp = 4;
+}
