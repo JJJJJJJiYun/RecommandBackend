@@ -12,11 +12,13 @@ class RecommandService(recommand_pb2_grpc.RecommandServiceServicer):
     def Recommand(self, request, context):
         try:
             recommand_items, total, total_page = recommand(request.user_id, request.page, request.page_size)
-            return recommand_pb2.RecommandReply(item_ids=recommand_items,
-                                                page_info=common_pb2.PageInfo(page=request.page,
-                                                                              page_size=request.page_size,
-                                                                              total=total,
-                                                                              total_page=total_page))
+            return recommand_pb2.RecommandReply(
+                items=[recommand_pb2.Item(item_id=item_id, item_type=item_type) for item_type, item_id in
+                       recommand_items],
+                page_info=common_pb2.PageInfo(page=request.page,
+                                              page_size=request.page_size,
+                                              total=total,
+                                              total_page=total_page))
         except:
             traceback.print_exc()
             context.set_code(ERR_CODE_RECOMMAND)

@@ -10,6 +10,11 @@ service RecommandService {
     }
 }
 
+message Item {
+    string item_id = 1;
+    string item_type = 2;
+}
+
 message EmptyMessage {
 }
 
@@ -20,7 +25,7 @@ message RecommandRequest {
 }
 
 message RecommandReply {
-    repeated string item_ids = 1;
+    repeated Item items = 1;
     common.PageInfo page_info = 2;
 }
 

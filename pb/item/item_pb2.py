@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='item',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x12pb/item/item.proto\x12\x04item\x1a\x16pb/common/common.proto\"\x0e\n\x0c\x45mptyMessage\"X\n\x12GetItemListRequest\x12!\n\titem_type\x18\x01 \x01(\x0e\x32\x0e.item.ItemType\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x11\n\tpage_size\x18\x03 \x01(\r\"R\n\x10GetItemListReply\x12\x19\n\x05items\x18\x01 \x03(\x0b\x32\n.item.Item\x12#\n\tpage_info\x18\x02 \x01(\x0b\x32\x10.common.PageInfo\"?\n\x0eGetItemRequest\x12!\n\titem_type\x18\x01 \x01(\x0e\x32\x0e.item.ItemType\x12\n\n\x02id\x18\x02 \x01(\t\"E\n\x04Item\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\t*`\n\x08ItemType\x12\x0c\n\x08SOLUTION\x10\x00\x12\x0f\n\x0bTECH_RESULT\x10\x01\x12\x08\n\x04\x43\x41SE\x10\x02\x12\n\n\x06PATENT\x10\x03\x12\x10\n\x0c\x43OMPANY_NEED\x10\x04\x12\r\n\tCITY_NEED\x10\x05\x32\x7f\n\x0bItemService\x12\x41\n\x0bGetItemList\x12\x18.item.GetItemListRequest\x1a\x16.item.GetItemListReply\"\x00\x12-\n\x07GetItem\x12\x14.item.GetItemRequest\x1a\n.item.Item\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x12pb/item/item.proto\x12\x04item\x1a\x16pb/common/common.proto\"\x0e\n\x0c\x45mptyMessage\"X\n\x12GetItemListRequest\x12!\n\titem_type\x18\x01 \x01(\x0e\x32\x0e.item.ItemType\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x11\n\tpage_size\x18\x03 \x01(\r\"R\n\x10GetItemListReply\x12\x19\n\x05items\x18\x01 \x03(\x0b\x32\n.item.Item\x12#\n\tpage_info\x18\x02 \x01(\x0b\x32\x10.common.PageInfo\"?\n\x0eGetItemRequest\x12!\n\titem_type\x18\x01 \x01(\x0e\x32\x0e.item.ItemType\x12\n\n\x02id\x18\x02 \x01(\t\"X\n\x04Item\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\t\x12\x11\n\titem_type\x18\x05 \x01(\t*`\n\x08ItemType\x12\x0c\n\x08SOLUTION\x10\x00\x12\x0f\n\x0bTECH_RESULT\x10\x01\x12\x08\n\x04\x43\x41SE\x10\x02\x12\n\n\x06PATENT\x10\x03\x12\x10\n\x0c\x43OMPANY_NEED\x10\x04\x12\r\n\tCITY_NEED\x10\x05\x32\x7f\n\x0bItemService\x12\x41\n\x0bGetItemList\x12\x18.item.GetItemListRequest\x1a\x16.item.GetItemListReply\"\x00\x12-\n\x07GetItem\x12\x14.item.GetItemRequest\x1a\n.item.Item\"\x00\x62\x06proto3'
   ,
   dependencies=[pb_dot_common_dot_common__pb2.DESCRIPTOR,])
 
@@ -57,8 +57,8 @@ _ITEMTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=378,
-  serialized_end=474,
+  serialized_start=397,
+  serialized_end=493,
 )
 _sym_db.RegisterEnumDescriptor(_ITEMTYPE)
 
@@ -252,6 +252,13 @@ _ITEM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='item_type', full_name='item.Item.item_type', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -265,7 +272,7 @@ _ITEM = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=307,
-  serialized_end=376,
+  serialized_end=395,
 )
 
 _GETITEMLISTREQUEST.fields_by_name['item_type'].enum_type = _ITEMTYPE
@@ -323,8 +330,8 @@ _ITEMSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=476,
-  serialized_end=603,
+  serialized_start=495,
+  serialized_end=622,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetItemList',

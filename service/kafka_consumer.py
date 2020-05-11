@@ -1,4 +1,5 @@
 import json
+
 import traceback
 
 from utils.kafka import consumer

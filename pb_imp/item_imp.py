@@ -40,7 +40,7 @@ class ItemService(item_pb2_grpc.ItemServiceServicer):
             sql = 'select * from ' + table_name + ' where id=%s'
             item = pool.fetch_one(sql, request.id)
             return item_pb2.Item(id=str(item['id']), title=item['title'], content=item['content'],
-                                 timestamp=str(item['created_at']))
+                                 timestamp=str(item['created_at']), item_type=item_type)
         except:
             traceback.print_exc()
             context.set_code(ERR_CODE_GET_ITEM_LIST)

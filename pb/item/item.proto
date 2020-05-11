@@ -43,4 +43,5 @@ message Item {
     string title = 2;
     string content = 3;
     string timestamp = 4;
+    string item_type = 5;
 }
