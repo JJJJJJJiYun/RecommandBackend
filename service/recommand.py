@@ -31,7 +31,7 @@ def recommand(user_id, page, page_size):
             item_score_dict[item] = (score + (
                 item_cf_item_score_dict[item] if item in item_cf_item_score_dict else 0)) / 2
         redis.zadd(key_of_user_recommand_result(user_id), item_score_dict)
-        redis.expire(key_of_user_recommand_result(user_id), 60)
+        redis.expire(key_of_user_recommand_result(user_id), 10)
         result = redis.zrevrange(key_of_user_recommand_result(user_id), 0, -1)
         return get_recommand_items(result[start:end]), len(result), get_total_page(len(result), page_size)
     except Exception as e:
